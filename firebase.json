@@ -1,0 +1,22 @@
+{
+  "hosting": {
+    "source": ".",
+    "rewrites": [
+      {
+        "source": "**",
+        "function": "ssrmeetupapp64da2"
+      }
+    ],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "frameworksBackend": {
+      "region": "us-central1"
+    }
+  },
+  "functions": {
+    "source": ".firebase/meet-up-app-64da2/functions"
+  }
+}

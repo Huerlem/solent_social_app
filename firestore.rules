@@ -1,0 +1,16 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /events/{eventId} {
+      allow read, write: if true;
+    }
+    match /bookings/{bookingId} {
+      allow read: if request.auth != null && request.auth.uid == resource.data.user.uid;
+      allow write: if request.auth != null;
+    }
+    match /users/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId; // O usuário pode ler seus próprios dados
+      allow write: if request.auth != null && request.auth.uid == userId; // O usuário pode atualizar seus próprios dados
+    }
+  }
+}
